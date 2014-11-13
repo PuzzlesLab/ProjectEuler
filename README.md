@@ -19,16 +19,19 @@ You also can check us out at YouTube, click [here](https://www.youtube.com/chann
 + How to update this repo (if you are one of the team) [__UPDATE SOURCE CODE ONLY__]:
    + (assume you've cloned this repo)
    + Pull all changes first
+   
       ```
       $ git pull origin master
       ```
    + Make your changes (DO NOT TOUCH OTHER'S CODE)
    + Commit your changes
+   
      ```
      $ git add -A
      $ git commit -m "<your message>"
      ```
    + Push your commit
+   
      ```
      $ git push origin master
      ```
@@ -50,6 +53,7 @@ You also can check us out at YouTube, click [here](https://www.youtube.com/chann
      ```
      Copy above code to `update-<yourname>.sh`.
    + Use a shell script for updating repo
+   
      ```
      $ sh update-<yourname>.sh
      ```
