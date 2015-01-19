@@ -16,6 +16,6 @@ public class euler {
 
 			max=Math.max(place-remainderOccurance[remainder],max);
 		}
-		System.out.println("d="+max);
+		System.out.println("d="+(max+1));
 	}
 }
