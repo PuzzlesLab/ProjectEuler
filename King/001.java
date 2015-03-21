@@ -1,16 +1,14 @@
 public class euler {
 	
-	public static void main (String [] abc) {
-		int total=0;
-		for (int i=3;i<1000;i+=3) {
-			total+=i;
-		}
-		for (int i=5;i<1000;i+=5) {
-			if (i%3!=0) {
-				total+=i;
-			}
-		}
-		System.out.println(total);
+	public static int sumOfMultiplesLimit (int num, int limit) {
+		int n=(limit-1)/num;
+		return (n*(2*num+(n-1)*num))/2;
 	}
 	
+	public static void main (String [] zzzz) {
+		long before=System.currentTimeMillis();
+		int limit=1000;
+		System.out.println(sumOfMultiplesLimit(3,limit)+sumOfMultiplesLimit(5,limit)-sumOfMultiplesLimit(15,limit));
+		System.out.println("Took "+(System.currentTimeMillis()-before)+"ms.");
+	}
 }

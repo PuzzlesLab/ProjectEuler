@@ -2,70 +2,60 @@ public class euler {
 	
 	public static int [] primeNumbers=new int [78498];
 	public static int primeNumbersCount=0;
+	public static boolean [] notPrime=new boolean [1000001];
+	public static boolean [] checked=new boolean [1000001];
 	
-	public static void sieveOfEratothenes (int end) {
-		boolean [] flag=new boolean [end+1];
-		for (int i=2;i*i<=end;i++) {
-			if (!flag[i]) {
-				for (int i2=i*i;i2<=end;i2+=i) {
-					flag[i2]=true;
+	public static void sieveOfEratothenes () {
+		for (int i=2;i*i<1000001;i++) {
+			if (!notPrime[i]) {
+				for (int i2=i*i;i2<1000001;i2+=i) {
+					notPrime[i2]=true;
 				}
 			}
 		}
-		for (int i=2;i<=end;i++) {
-			if (!flag[i]) {
+		primeNumbers[primeNumbersCount++]=2;
+		for (int i=3;i<1000001;i+=2) {
+			if (!notPrime[i]) {
 				primeNumbers[primeNumbersCount++]=i;
 			}
 		}
 	}
 	
-	public static boolean isPrime (int num) {
-		//Since the prime numbers are in ascending order, we can use binary search.
-		int mid;
-		int min=0;
-		int max=primeNumbers.length-1;
-		while (min<=max) {
-			mid=(min+max)/2;
-			if (primeNumbers[mid]==num) {
-				return true;
-			} else if (primeNumbers[mid]>num) {
-				max=mid-1;
-			} else {
-				min=mid+1;
-			}
-		}
-		return false;
-	}
-	
-	public static boolean isCircularPrime (int num) {
+	public static int circularPrime (int num) {
 		if (num<10) {
-			return true;
+			checked[num]=true;
+			return 1;
 		} else if (num%2==0) {
-			return false;
+			return 0;
 		}
+		int rotated=num;
 		int divisor=(int)Math.pow(10,(int)Math.log10(num));
-		for (int i=(int)Math.log10(num);i>0;i--) {
-			//rotate n times for n digits.
-			int front=num/divisor;
-			if (front%2==0) {
-				return false;
+		int count=0;
+		do {
+			checked[rotated]=true;
+			if (notPrime[rotated]) {
+				return 0;
 			} else {
-				num=(num%divisor)*10+front;
-				if (!isPrime(num)) {
-					return false;
+				int firstDigit=rotated/divisor;
+				rotated=(rotated%divisor)*10+firstDigit;
+				if (notPrime[rotated]) {
+					checked[rotated]=true;
+					return 0;
+				} else {
+					count++;
 				}
 			}
-		}
-		return true;
+		} while (rotated!=num);
+		return count;
 	}
 	
 	public static void main (String [] abc) {
 		long start=System.currentTimeMillis();
-		sieveOfEratothenes(1000000);
+		sieveOfEratothenes();
 		int count=0;
 		for (int i=0;i<primeNumbersCount;i++) {
-			if (isCircularPrime(primeNumbers[i])) {
-				count++;
+			if (!checked[primeNumbers[i]]) {
+				count+=circularPrime(primeNumbers[i]);
 			}
 		}
 		System.out.println(count);
