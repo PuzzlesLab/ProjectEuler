@@ -1,40 +1,40 @@
 public class euler {
 	
-	public static int isPandigital (String s) {
-		boolean [] flag=new boolean [10];
-		flag[0]=true;
-		int count=0;
-		long num=Long.parseLong(s); //s could be too many digits for int.
-		while (num>0) {
-			if (!flag[(int)(num%10)]) {
-				flag[(int)(num%10)]=true;
-				count++;
-			} else {
-				return 0;
-			}
-			num/=10;
-		}
-		if (count==9) return 1;
-		else return 2;
-	}
-	
 	public static void main (String [] args) {
 		long before=System.currentTimeMillis();
-		String product="";
-		for (int i=2;i<=9876;i++) {
-			String s="";
-			for (int i2=1;i2<=i;i2++) {
-				s+=String.valueOf(i*i2);
-				int state=isPandigital(s);
-				if (state==0) {
+		int maxConProd=918273645;
+		for (int i=1;i<=9876;i++) {
+			int currConProd=0;
+			int [] digitOccurance=new int [10];
+			int currDigitsCount=0;
+			boolean hasDuplicatedDigit=false;
+			for (int i2=1;i2<=i && !hasDuplicatedDigit;i2++) {
+				int prod=i*i2;
+				int prodDigitsCount=(int)Math.log10(prod)+1;
+				currDigitsCount=currDigitsCount+prodDigitsCount;
+				if (currDigitsCount>9) {
 					break;
-				} else if (state==1) {
-					product=s;
+				}
+				currConProd=currConProd*(int)Math.pow(10, prodDigitsCount)+prod;
+				while (prod>0) {
+					int digit=prod%10;
+					if (digit==0 || digitOccurance[digit]>0) {
+						hasDuplicatedDigit=true;
+						break;
+					} else {
+						digitOccurance[digit]++;
+					}
+					prod/=10;
+				}
+				if (currConProd*(int)Math.pow(10, 9-currDigitsCount)<maxConProd) {
 					break;
+				}
+				if (!hasDuplicatedDigit && currDigitsCount==9) {
+					maxConProd=Math.max(currConProd, maxConProd);
 				}
 			}
 		}
-		System.out.println(product);
+		System.out.println(maxConProd);
 		System.out.println("Took "+(System.currentTimeMillis()-before)+"ms.");
 	}
 }

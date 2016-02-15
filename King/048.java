@@ -1,15 +1,21 @@
-import java.math.BigInteger;
-
 public class euler {
 	
 	public static void main (String [] args) {
 		long before=System.currentTimeMillis();
-		BigInteger sum=BigInteger.ZERO;
+		long sum=0;
+		long modz=10000000000L;
 		for (int i=1;i<=1000;i++) {
-			sum=sum.add(new BigInteger(String.valueOf(i)).pow(i));
+			long currInd=1;
+			for (int i2=0;i2<i;i2++) {
+				currInd*=i;
+				currInd%=modz;
+				//we are only interested in last 10 digits.
+			}
+			sum+=currInd;
+			sum%=modz;
+			//we are only interested in last 10 digits.
 		}
-		String s=sum.toString();
-		System.out.println(s.substring(s.length()-10,s.length()));
+		System.out.println(sum);
 		System.out.println("Took "+(System.currentTimeMillis()-before)+"ms.");
 	}
 }

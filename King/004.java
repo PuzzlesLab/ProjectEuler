@@ -11,10 +11,13 @@ public class euler {
 	
 	public static void main (String [] zzz) {
 		int largest=0;
-		for (int i=999;i>=100;i--) {
-			for (int i2=999;i2>=100;i2--) {
-				if (isPalindrome(String.valueOf(i*i2)) && ((i*i2)>largest)) {
-					largest=i*i2;
+		for (int i=999;i>900;i--) {
+			for (int i2=i-1;i2>=900;i2--) {
+				int prod=i*i2;
+				if (prod<=largest) {
+					break;
+				} else if (isPalindrome(String.valueOf(prod))) {
+					largest=prod;
 					break;
 				}
 			}

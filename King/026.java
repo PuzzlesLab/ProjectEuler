@@ -2,6 +2,7 @@ public class euler {
 
 	public static void main (String [] zz) {
 		int max=1;
+		int d=-1;
 		for (int i=7;i<1000;i++) {
 			int [] remainderOccurance=new int [i];
 			int place=0;
@@ -14,8 +15,12 @@ public class euler {
 				//remainder repeats, means the sequence is repeated!
 			}
 
-			max=Math.max(place-remainderOccurance[remainder],max);
+			int length=place-remainderOccurance[remainder];
+			if (length>max) {
+				max=length;
+				d=i;
+			}
 		}
-		System.out.println("d="+(max+1));
+		System.out.println("d="+d);
 	}
 }

@@ -1,18 +1,18 @@
 import java.math.BigInteger;
 
-public class euler {
+public class euler2 {
 	
 	public static void main (String [] abc) {
 		BigInteger bi=BigInteger.ONE;
-		BigInteger two=new BigInteger("2");
-		for (int i=0;i<1000;i++) {
-			bi=bi.multiply(two);
+		BigInteger base=new BigInteger("256");
+		for (int i=0;i<125;i++) {
+			bi=bi.multiply(base);
 		}
-		BigInteger sum=BigInteger.ZERO;
-		while (bi.compareTo(BigInteger.ZERO)>0) {
-			sum=sum.add(bi.remainder(BigInteger.TEN));
-			bi=bi.divide(BigInteger.TEN);
+		int sum=0;
+		char [] c=bi.toString().toCharArray();
+		for (int i=0;i<c.length;i++) {
+			sum+=(c[i]-'0');
 		}
-		System.out.println(sum.toString());
+		System.out.println(sum);
 	}
 }

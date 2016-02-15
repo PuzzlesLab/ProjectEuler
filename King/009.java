@@ -1,25 +1,18 @@
 public class euler {
 	
 	public static void main (String [] abc) {
-		boolean found=false;
-		for (int a=1;a<=1000;a++) {
-			for (int b=1;b<=1000;b++) {
-				double cTest1=Math.sqrt(a*a+b*b);
-				double cTest2=(double)(int)cTest1;
-				if (cTest1==cTest2) {
-					int c=(int)cTest2;
-					if (a+b+c==1000) {
-						System.out.println(a*b*c);
-						found=true;
-					}
-				}
-				if (found) {
+		int answer=0;
+		for (int a=1;a<1000 && answer==0;a++) {
+			for (int b=a+1;b<=1000 && answer==0;b++) {
+				double c=Math.sqrt(a*a+b*b);
+				int cInt=(int)c;
+				if (a+b+c>1000) {
 					break;
+				} else if (c==(double)cInt && a+b+cInt==1000) {
+					answer=a*b*cInt;
 				}
-			}
-			if (found) {
-				break;
 			}
 		}
+		System.out.println(answer);
 	}
 }

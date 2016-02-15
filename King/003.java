@@ -1,19 +1,16 @@
-import java.math.BigInteger;
-
-public class euler {
+public class euler2 {
 	
-	public static BigInteger largestPrimeFactor (BigInteger bi) {
-		BigInteger factor=new BigInteger("2");
-		for (;factor.compareTo(bi)<=0;factor=factor.add(BigInteger.ONE)) {
-			if (bi.remainder(factor)==BigInteger.ZERO) {
-				bi=bi.divide(factor);
-				factor=factor.subtract(BigInteger.ONE);
+	public static long largestPrimeFactor (long l) {
+		long factor=3;
+		for (;factor<=l;factor+=2) {
+			while (l%factor==0) {
+				l/=factor;
 			}
 		}
-		return factor;
+		return factor-2;
 	}
 	
 	public static void main (String [] zzz) {
-		System.out.println(largestPrimeFactor(new BigInteger("600851475143")).toString());
+		System.out.println(largestPrimeFactor(600851475143L));
 	}
 }

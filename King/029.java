@@ -1,24 +1,22 @@
+import java.util.SortedSet;
+import java.util.TreeSet;
+
 public class euler {
 	
 	public static void main (String[] zzz) {
-		double [] d=new double [99*99+1];
-		int dCount=0;
-		for (int i=2;i<=100;i++) {
-			for (int i2=2;i2<=100;i2++) {
-				double v=Math.pow(i,i2);
-				boolean found=false;
-				for (int di=0;di<dCount;di++) {
-					if (d[di]==v) {
-						found=true;
-						break;
-					}
-				}
-				if (!found) {
-					d[dCount++]=v;
+		long start=System.currentTimeMillis();
+		SortedSet<Double> valuesSet=new TreeSet<>();
+		for (int a=2;a<=100;a++) {
+			for (int b=2;b<=100;b++) {
+				double value=Math.pow(a, b);
+				if (!valuesSet.contains(value)) {
+					valuesSet.add(value);
 				}
 			}
 		}
-		System.out.println(dCount);
+		System.out.println(valuesSet.size());
+		long end=System.currentTimeMillis();
+		System.out.println(end-start);
 	}
 	
 }

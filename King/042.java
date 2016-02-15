@@ -17,7 +17,7 @@ public class euler {
 	
 	public static boolean isTriangleNumbers (int t) {
 		double sqrt=Math.sqrt(1+8*t);
-		return (sqrt==(double)(int)(sqrt));
+		return (sqrt==(double)(int)(sqrt) && (int)sqrt%2==1);
 	}
 	
 	public static void main (String [] args) throws IOException {

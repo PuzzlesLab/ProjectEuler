@@ -14,6 +14,7 @@ public class euler {
 	}
 	
 	public static void main (String [] abc) {
+		long before=System.currentTimeMillis();
 		int [] abundantNumbers=new int [28124];
 		int abundantNumbersCount=0;
 		for (int i=12;i<28112;i++) {
@@ -23,7 +24,7 @@ public class euler {
 		}
 		boolean [] sumOfAbundanceNumber=new boolean [28124];
 		for (int i=0;i<abundantNumbersCount;i++) {
-			for (int i2=0;i2<abundantNumbersCount;i2++) {
+			for (int i2=i;i2<abundantNumbersCount;i2++) {
 				int sum=abundantNumbers[i]+abundantNumbers[i2];
 				if (sum<28124) {
 					sumOfAbundanceNumber[sum]=true;
@@ -34,12 +35,13 @@ public class euler {
 		}
 		int sum=0;
 		for (int i=1;i<28124;i++) {
-			if (sumOfAbundanceNumber[i]==false) {
+			if (!sumOfAbundanceNumber[i]) {
 				sum=sum+i;
 			}
 		}
+		long after=System.currentTimeMillis();
 		System.out.println(sum);
+		System.out.println("Took "+(after-before)+"ms.");
 	}
-	
 	
 }
