@@ -1,9 +1,9 @@
 #!/bin/sh
 git pull origin master
-now="$(date): update all by king"
+now="$(date): update all by chahwei"
 
 git add -A README.md
-git add -A King/*
+git add -A chahwei/*
 git add -A update-chahwei.sh
 
 git commit -m "$now"
