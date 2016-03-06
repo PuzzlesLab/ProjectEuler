@@ -1,11 +1,10 @@
 public class euler {
-	
+
 	public static void main (String [] zzz) {
-		int squareSum=0;
-		for (int i=1;i<=100;i++) {
-			squareSum=squareSum+i*i;
-		}
-		int sumSquare=5050*5050;
+		int n=100;
+		int sumSquare = (n*(n+1)/2);
+		sumSquare*=sumSquare;
+		int squareSum = (n*(n+1)*(2*n+1))/6;
 		System.out.println(sumSquare-squareSum);
 	}
 }
