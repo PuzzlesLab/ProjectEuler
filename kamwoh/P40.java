@@ -30,59 +30,43 @@ public class P40 {
     public static void main(String[] args)
     {
         //v1();
-        zzzz();
         System.out.println("");
-        int total=0;
-        int last;
-        /*
-        while(total<=1000000)
-        {
-            last = total;
-            
-        }*/
         
-    }
-    
-    public static void zzzz()
-    {
-        int total=0;
-        int n;
-        int last;
-        int count = 0;
-        while(total<=1000000)
+        int total=1; //D1 0
+        int n = 0;
+        int l = 1;
+        int size = 1;
+        int count = 1; // 1 is known as D 1
+        System.out.println(total+" "+(n+1));
+        int formula;
+        String s;
+        int temp;
+        int index;
+        long before = System.currentTimeMillis();
+        while(n<=1000000)
         {
+            n+=size;
+            l++;
+            formula = (int)Math.pow(10, count);
+            if(l>=formula)
+                size=++count;
             
-            last = total;
-            n=9*(int)Math.pow(10, count)*(count+1);
-            total+=n;
-            System.out.println("1"+z(count)+" to "+"9"+z1(count));
-            count++;
-            System.out.println("n "+n+" total "+ (last+1) +" "+total);
+            if(n>=formula-size&&n<=formula)
+            {
+                System.out.println(l+" "+(n+1));
+                s = String.valueOf(l);
+                temp = n+1;
+                index = 0;
+                while(temp!=formula)
+                {
+                    temp++;
+                    index++;
+                    //System.out.println(temp+" t");
+                }
+                total*=Integer.parseInt(""+s.charAt(index));
+            }
         }
-    }
-    
-    public static int check(int start)
-    {
-        return 0;
-    }
-    
-    public static String z1(int n)
-    {
-        String s ="";
-        for(int i=0;i<n;i++)
-        {
-            s+=""+9;
-        }
-        return s;
-    }
-    
-    public static String z(int n)
-    {
-        String s = "";
-        for(int i=0;i<n;i++)
-        {
-            s+=""+0;
-        }
-        return s;
+        System.out.println(total);
+        System.out.println("time:"+(System.currentTimeMillis()-before));
     }
 }
