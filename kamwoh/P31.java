@@ -5,7 +5,31 @@ import java.util.TreeMap;
 
 
 public class P31 {
-
+/* brute force
+    public static void main(String[] args)
+    {
+        int ans=200;
+        int[] rm = {1,2,5,10,20,50,100,200};
+        int way = 0;
+        for(int i=0;i<=ans;i++)
+        {
+            for(int j=0;j<=ans/2;j++)
+            {
+                for(int k=0;k<=ans/5;k++)
+                {
+                    for(int l=0;l<=ans/10;l++)
+                        for(int m=0;m<=ans/20;m++)
+                            for(int n=0;n<=ans/50;n++)
+                                for(int o=0;o<=ans/100;o++)
+                                    for(int p=0;p<=ans/200;p++)
+                                        if(i+j*2+k*5+l*10+m*20+n*50+o*100+p*200==ans)
+                                            way++;
+                }
+            }
+        }
+        System.out.println(way);
+    }
+    */
     public static void main(String[] args)
     {
         int[] val = new int[11];

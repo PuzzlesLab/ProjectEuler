@@ -26,10 +26,10 @@ public class P10SummationOfPrimes
     {
         long total=2,maxprime=0;
         long start = System.currentTimeMillis();
-        for(long i=3;i<2000000;i++)
+        for(long i=3;i<2000000;i+=2)
         {
-            if(i%2==1)
-                if(isPrime(i))
+            //if(i%2==1)
+                if(Library.isPrime(i))
                     //if(maxprime<i)
                     {   //maxprime = i;
                         //System.out.println(i);  

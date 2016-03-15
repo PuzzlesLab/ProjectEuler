@@ -10,7 +10,8 @@ public class P3LargestPrimeFactor
        //long x = 360;
        long x = 600851475143L;
        int count = 0;
-       for(int i=1;i<=x;i++)
+       long b4 = System.currentTimeMillis();
+       for(int i=2;i<=x;i++)
        {
            if(Library.isPrime(i))
             if(x%i == 0)
@@ -24,5 +25,6 @@ public class P3LargestPrimeFactor
            //count++;
            //System.out.println("count "+count);
         }
+        System.out.println(System.currentTimeMillis()-b4 + " ms");
     }
 }

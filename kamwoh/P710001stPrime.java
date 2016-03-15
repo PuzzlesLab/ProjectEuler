@@ -49,7 +49,7 @@ public class P710001stPrime
                 count++;
             number++;*/
         //if(number%2==1)   
-            if(isPrime(number))
+            if(Library.isPrime(number))
             {
                 count++;
                 //System.out.println(number);
